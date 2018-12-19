@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "CarRentalSystem",
+    "packageName": "io.github.rentalcar.application",
+    "packageFolder": "io/github/rentalcar/application",
+    "serverPort": 8080,
+    "serviceDiscoveryType": false,
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "pl",
+      "en"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.7.1",
+    "jwtSecretKey": "YWQ2YTUwNTAwMzE3YmQwMDgyZWFlYWU2ODYzZjk3OTM5YTZlMWY5YWNkNzM1YWUzNGIzN2YxMDY3OTJjYmEzNmZkNjQyMzYxY2UyYjYyMjZhNDQ3NjU4ODdjY2IzMjc2Zjg4NDViNjNmODBiYTI5YjkxMGY0ZjNhNDM1NDAzMjE=",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "lmateusz10",
+  "repository-name": "car-rental"
+}
