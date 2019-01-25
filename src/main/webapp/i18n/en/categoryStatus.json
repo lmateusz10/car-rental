@@ -1,0 +1,10 @@
+{
+    "carRentalSystemApp": {
+        "CategoryStatus": {
+            "null": "",
+            "AVAILABLE": "AVAILABLE",
+            "RESTRICTED": "RESTRICTED",
+            "DISABLED": "DISABLED"
+        }
+    }
+}

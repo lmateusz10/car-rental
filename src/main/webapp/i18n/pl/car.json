@@ -1,0 +1,33 @@
+{
+    "carRentalSystemApp": {
+        "car": {
+            "home": {
+                "title": "Car",
+                "createLabel": "Dodaj Car",
+                "createOrEditLabel": "Dodaj lub edytuj: Car"
+            },
+            "created": "Utworzono nowy obiekt typu Car z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono obiekt typu Car z identyfikatorem {{ param }}",
+            "deleted": "Usunięto obiekt typu Car z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Car {{ id }}?"
+            },
+            "detail": {
+                "title": "Car"
+            },
+            "licensePlate": "License Plate",
+            "name": "Name",
+            "transmission": "Transmission",
+            "aircondition": "Aircondition",
+            "doors": "Doors",
+            "keywords": "Keywords",
+            "description": "Description",
+            "rating": "Rating",
+            "dateAdded": "Date Added",
+            "dateModified": "Date Modified",
+            "sortOrder": "Sort Order",
+            "car": "Car",
+            "category": "Category"
+        }
+    }
+}

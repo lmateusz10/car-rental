@@ -1,0 +1,25 @@
+{
+    "carRentalSystemApp": {
+        "reservation": {
+            "home": {
+                "title": "Reservation",
+                "createLabel": "Dodaj Reservation",
+                "createOrEditLabel": "Dodaj lub edytuj: Reservation"
+            },
+            "created": "Utworzono nowy obiekt typu Reservation z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono obiekt typu Reservation z identyfikatorem {{ param }}",
+            "deleted": "Usunięto obiekt typu Reservation z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Reservation {{ id }}?"
+            },
+            "detail": {
+                "title": "Reservation"
+            },
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "paymentStatus": "Payment Status",
+            "car": "Car",
+            "user": "User"
+        }
+    }
+}

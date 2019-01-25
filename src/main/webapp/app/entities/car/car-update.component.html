@@ -1,0 +1,125 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-car-heading" jhiTranslate="carRentalSystemApp.car.home.createOrEditLabel">Create or edit a Car</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!car.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="car.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.licensePlate" for="field_licensePlate">License Plate</label>
+                    <input type="text" class="form-control" name="licensePlate" id="field_licensePlate"
+                        [(ngModel)]="car.licensePlate" required/>
+                    <div [hidden]="!(editForm.controls.licensePlate?.dirty && editForm.controls.licensePlate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.licensePlate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="car.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.transmission" for="field_transmission">Transmission</label>
+                    <select class="form-control" name="transmission" [(ngModel)]="car.transmission" id="field_transmission"  required>
+                        <option value="MANUAL">{{'carRentalSystemApp.TransmissionType.MANUAL' | translate}}</option>
+                        <option value="AUTOMATIC">{{'carRentalSystemApp.TransmissionType.AUTOMATIC' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.transmission?.dirty && editForm.controls.transmission?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.transmission?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.aircondition" for="field_aircondition">Aircondition</label>
+                    <input type="checkbox" class="form-control" name="aircondition" id="field_aircondition"
+                        [(ngModel)]="car.aircondition" />
+                    <div [hidden]="!(editForm.controls.aircondition?.dirty && editForm.controls.aircondition?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.aircondition?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.doors" for="field_doors">Doors</label>
+                    <input type="number" class="form-control" name="doors" id="field_doors"
+                        [(ngModel)]="car.doors" required/>
+                    <div [hidden]="!(editForm.controls.doors?.dirty && editForm.controls.doors?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.doors?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.doors?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.keywords" for="field_keywords">Keywords</label>
+                    <input type="text" class="form-control" name="keywords" id="field_keywords"
+                        [(ngModel)]="car.keywords" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="car.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.rating" for="field_rating">Rating</label>
+                    <input type="number" class="form-control" name="rating" id="field_rating"
+                        [(ngModel)]="car.rating" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.dateAdded" for="field_dateAdded">Date Added</label>
+                    <div class="input-group">
+                        <input id="field_dateAdded" type="text" class="form-control" name="dateAdded" ngbDatepicker  #dateAddedDp="ngbDatepicker" [(ngModel)]="car.dateAdded"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateAddedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.dateModified" for="field_dateModified">Date Modified</label>
+                    <div class="input-group">
+                        <input id="field_dateModified" type="text" class="form-control" name="dateModified" ngbDatepicker  #dateModifiedDp="ngbDatepicker" [(ngModel)]="car.dateModified"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateModifiedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.sortOrder" for="field_sortOrder">Sort Order</label>
+                    <input type="number" class="form-control" name="sortOrder" id="field_sortOrder"
+                        [(ngModel)]="car.sortOrder" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

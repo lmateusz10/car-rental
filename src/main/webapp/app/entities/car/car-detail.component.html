@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="car">
+            <h2><span jhiTranslate="carRentalSystemApp.car.detail.title">Car</span> {{car.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="carRentalSystemApp.car.licensePlate">License Plate</span></dt>
+                <dd>
+                    <span>{{car.licensePlate}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.name">Name</span></dt>
+                <dd>
+                    <span>{{car.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.transmission">Transmission</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'carRentalSystemApp.TransmissionType.' + car.transmission}}">{{car.transmission}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.aircondition">Aircondition</span></dt>
+                <dd>
+                    <span>{{car.aircondition}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.doors">Doors</span></dt>
+                <dd>
+                    <span>{{car.doors}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.keywords">Keywords</span></dt>
+                <dd>
+                    <span>{{car.keywords}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.description">Description</span></dt>
+                <dd>
+                    <span>{{car.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.rating">Rating</span></dt>
+                <dd>
+                    <span>{{car.rating}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.dateAdded">Date Added</span></dt>
+                <dd>
+                    <span>{{car.dateAdded}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.dateModified">Date Modified</span></dt>
+                <dd>
+                    <span>{{car.dateModified}}</span>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.sortOrder">Sort Order</span></dt>
+                <dd>
+                    <span>{{car.sortOrder}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/car', car.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

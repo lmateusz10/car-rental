@@ -1,0 +1,9 @@
+{
+    "carRentalSystemApp": {
+        "TransmissionType": {
+            "null": "",
+            "MANUAL": "MANUAL",
+            "AUTOMATIC": "AUTOMATIC"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "carRentalSystemApp": {
+        "PaymentStatus": {
+            "null": "",
+            "NEW": "NEW",
+            "PAID": "PAID",
+            "CANCELED": "CANCELED",
+            "REJECTED": "REJECTED"
+        }
+    }
+}

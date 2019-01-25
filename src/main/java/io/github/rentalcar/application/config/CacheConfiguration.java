@@ -38,6 +38,13 @@ public class CacheConfiguration {
             cm.createCache(io.github.rentalcar.application.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.rentalcar.application.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.rentalcar.application.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(io.github.rentalcar.application.domain.Category.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.rentalcar.application.domain.Category.class.getName() + ".cars", jcacheConfiguration);
+            cm.createCache(io.github.rentalcar.application.domain.Car.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.rentalcar.application.domain.Car.class.getName() + ".cars", jcacheConfiguration);
+            cm.createCache(io.github.rentalcar.application.domain.Car.class.getName() + ".categories", jcacheConfiguration);
+            cm.createCache(io.github.rentalcar.application.domain.Address.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.rentalcar.application.domain.Reservation.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
