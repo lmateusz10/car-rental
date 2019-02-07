@@ -33,7 +33,7 @@ export const reservationRoute: Routes = [
         path: 'reservation',
         component: ReservationComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            // authorities: ['ROLE_USER'],
             pageTitle: 'carRentalSystemApp.reservation.home.title'
         },
         canActivate: [UserRouteAccessService]
