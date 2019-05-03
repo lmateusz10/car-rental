@@ -2,6 +2,7 @@ package io.github.rentalcar.application.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import io.github.rentalcar.application.domain.Reservation;
+import io.github.rentalcar.application.repository.UserRepository;
 import io.github.rentalcar.application.service.ReservationService;
 import io.github.rentalcar.application.web.rest.errors.BadRequestAlertException;
 import io.github.rentalcar.application.web.rest.util.HeaderUtil;
@@ -9,6 +10,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -34,6 +36,7 @@ public class ReservationResource {
     public ReservationResource(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
+
 
     /**
      * POST  /reservations : Create a new reservation.

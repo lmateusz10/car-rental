@@ -3,7 +3,7 @@
         <span jhiTranslate="carRentalSystemApp.reservation.home.title">Reservations</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reservation" [routerLink]="['/reservation/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="carRentalSystemApp.reservation.home.createLabelff">
+            <span  jhiTranslate="carRentalSystemApp.reservation.home.createLabel">
             Create new Reservationddddd
             </span>
         </button>
@@ -19,7 +19,10 @@
             <th><span jhiTranslate="carRentalSystemApp.reservation.endDate">End Date</span></th>
             <th><span jhiTranslate="carRentalSystemApp.reservation.paymentStatus">Payment Status</span></th>
             <th><span jhiTranslate="carRentalSystemApp.reservation.car">Car</span></th>
-            <th><span jhiTranslate="carRentalSystemApp.reservation.user">User</span></th>
+                <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="form-group">
+
+                <th><span jhiTranslate="carRentalSystemApp.reservation.user">User</span></th>
+                </div>
             <th></th>
             </tr>
             </thead>
@@ -34,9 +37,11 @@
                         <a [routerLink]="['../car', reservation.car?.id, 'view' ]" >{{reservation.car?.id}}</a>
                     </div>
                 </td>
+                <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="form-group">
                 <td>
                     {{reservation.user?.login}}
                 </td>
+                </div>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

@@ -1,6 +1,7 @@
 package io.github.rentalcar.application.service;
 
 import io.github.rentalcar.application.domain.Reservation;
+import io.github.rentalcar.application.domain.User;
 import io.github.rentalcar.application.repository.ReservationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +22,15 @@ public class ReservationService {
     private final Logger log = LoggerFactory.getLogger(ReservationService.class);
 
     private final ReservationRepository reservationRepository;
+    private UserService userService;
 
-    public ReservationService(ReservationRepository reservationRepository) {
+    public ReservationService(
+        ReservationRepository reservationRepository,
+        UserService userService
+    ) {
+
         this.reservationRepository = reservationRepository;
+        this.userService = userService;
     }
 
     /**
@@ -33,6 +40,10 @@ public class ReservationService {
      * @return the persisted entity
      */
     public Reservation save(Reservation reservation) {
+        User user = userService.getUserWithAuthorities().get();
+        List list = userService.getAuthorities();
+        List d = userService.getAuthorities();
+        reservation.setUser(user);
         log.debug("Request to save Reservation : {}", reservation);
         return reservationRepository.save(reservation);
     }

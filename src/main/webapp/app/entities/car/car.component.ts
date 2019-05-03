@@ -12,7 +12,8 @@ import { CarService } from './car.service';
 
 @Component({
     selector: 'jhi-car',
-    templateUrl: './car.component.html'
+    templateUrl: './car.component.html',
+    styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit, OnDestroy {
     currentAccount: any;
@@ -30,6 +31,10 @@ export class CarComponent implements OnInit, OnDestroy {
     previousPage: any;
     reverse: any;
 
+    newTask: string;
+    taskList: Array<string> = [];
+    tasksDone: Array<string> = [];
+
     constructor(
         protected carService: CarService,
         protected parseLinks: JhiParseLinks,
@@ -46,6 +51,22 @@ export class CarComponent implements OnInit, OnDestroy {
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+    }
+
+    add() {
+        this.taskList.push(this.newTask);
+        this.newTask = '';
+        console.log(this.taskList);
+    }
+
+    remove(task) {
+        this.taskList = this.taskList.filter(e => e !== task);
+    }
+
+    done(task: string) {
+        this.tasksDone.push(task);
+        this.remove(task);
+        console.log(this.tasksDone);
     }
 
     loadAll() {
@@ -128,5 +149,9 @@ export class CarComponent implements OnInit, OnDestroy {
 
     protected onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    rentCarButtonClick() {
+        this.router.navigate(['/reservation/new']);
     }
 }
