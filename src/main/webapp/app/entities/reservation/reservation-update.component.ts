@@ -9,7 +9,7 @@ import { IReservation } from 'app/shared/model/reservation.model';
 import { ReservationService } from './reservation.service';
 import { Car, ICar } from 'app/shared/model/car.model';
 import { CarService } from 'app/entities/car';
-import { IUser, UserService } from 'app/core';
+import { AccountService, IUser, User, UserService } from 'app/core';
 import { filter, map } from 'rxjs/operators';
 
 @Component({
@@ -25,17 +25,19 @@ export class ReservationUpdateComponent implements OnInit {
     cars: ICar[];
 
     users: IUser[];
+
+    user: any;
     startDateDp: any;
     endDateDp: any;
 
     constructor(
+        protected accountService: AccountService,
         protected jhiAlertService: JhiAlertService,
         protected reservationService: ReservationService,
         protected carService: CarService,
         protected userService: UserService,
-        protected activatedRoute: ActivatedRoute
-    ) //protected route: ActivatedRouteSnapshot
-    {}
+        protected activatedRoute: ActivatedRoute //protected route: ActivatedRouteSnapshot
+    ) {}
 
     ngOnInit() {
         this.isSaving = false;
@@ -70,6 +72,13 @@ export class ReservationUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+
+        this.accountService.identity().then(
+            x => {
+                this.user = x;
+            },
+            y => (this.user = 0)
+        );
     }
     renderCarInfo() {
         this.car;
@@ -80,7 +89,9 @@ export class ReservationUpdateComponent implements OnInit {
     }
 
     save() {
-        this.reservation.car.id = this.car.id;
+        this.reservation.user = this.user;
+
+        this.reservation.car = this.car;
         this.isSaving = true;
         if (this.reservation.id !== undefined) {
             this.subscribeToSaveResponse(this.reservationService.update(this.reservation));

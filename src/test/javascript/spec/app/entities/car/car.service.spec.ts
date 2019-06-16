@@ -37,7 +37,11 @@ describe('Service Tests', () => {
                 0,
                 currentDate,
                 currentDate,
-                0
+                0,
+                'image/png',
+                'AAAAAAA',
+                'image/png',
+                'AAAAAAA'
             );
         });
 
@@ -96,7 +100,9 @@ describe('Service Tests', () => {
                         rating: 1,
                         dateAdded: currentDate.format(DATE_FORMAT),
                         dateModified: currentDate.format(DATE_FORMAT),
-                        sortOrder: 1
+                        sortOrder: 1,
+                        image_1: 'BBBBBB',
+                        image_2: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -129,7 +135,9 @@ describe('Service Tests', () => {
                         rating: 1,
                         dateAdded: currentDate.format(DATE_FORMAT),
                         dateModified: currentDate.format(DATE_FORMAT),
-                        sortOrder: 1
+                        sortOrder: 1,
+                        image_1: 'BBBBBB',
+                        image_2: 'BBBBBB'
                     },
                     elemDefault
                 );

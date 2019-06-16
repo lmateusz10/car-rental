@@ -18,6 +18,7 @@ const ENTITY_STATES = [...carRoute, ...carPopupRoute];
     imports: [CarRentalSystemSharedModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [CarComponent, CarDetailComponent, CarUpdateComponent, CarDeleteDialogComponent, CarDeletePopupComponent],
     entryComponents: [CarComponent, CarUpdateComponent, CarDeleteDialogComponent, CarDeletePopupComponent],
+    exports: [CarComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CarRentalSystemCarModule {}

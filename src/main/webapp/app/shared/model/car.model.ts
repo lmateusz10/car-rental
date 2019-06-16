@@ -20,6 +20,10 @@ export interface ICar {
     dateAdded?: Moment;
     dateModified?: Moment;
     sortOrder?: number;
+    image_1ContentType?: string;
+    image_1?: any;
+    image_2ContentType?: string;
+    image_2?: any;
     cars?: IReservation[];
     categories?: ICategory[];
 }
@@ -38,6 +42,10 @@ export class Car implements ICar {
         public dateAdded?: Moment,
         public dateModified?: Moment,
         public sortOrder?: number,
+        public image_1ContentType?: string,
+        public image_1?: any,
+        public image_2ContentType?: string,
+        public image_2?: any,
         public cars?: IReservation[],
         public categories?: ICategory[]
     ) {

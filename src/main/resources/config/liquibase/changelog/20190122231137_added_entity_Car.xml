@@ -66,6 +66,20 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="image_1" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="image_1_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="image_2" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="image_2_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         

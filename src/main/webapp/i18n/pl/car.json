@@ -26,6 +26,8 @@
             "dateAdded": "Date Added",
             "dateModified": "Date Modified",
             "sortOrder": "Sort Order",
+            "image_1": "Image 1",
+            "image_2": "Image 2",
             "car": "Car",
             "category": "Category"
         }

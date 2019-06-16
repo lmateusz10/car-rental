@@ -49,6 +49,24 @@
                 <dd>
                     <span>{{car.sortOrder}}</span>
                 </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.image_1">Image 1</span></dt>
+                <dd>
+                    <div *ngIf="car.image_1">
+                        <a (click)="openFile(car.image_1ContentType, car.image_1)">
+                            <img [src]="'data:' + car.image_1ContentType + ';base64,' + car.image_1" style="max-width: 100%;" alt="car image"/>
+                        </a>
+                        {{car.image_1ContentType}}, {{byteSize(car.image_1)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="carRentalSystemApp.car.image_2">Image 2</span></dt>
+                <dd>
+                    <div *ngIf="car.image_2">
+                        <a (click)="openFile(car.image_2ContentType, car.image_2)">
+                            <img [src]="'data:' + car.image_2ContentType + ';base64,' + car.image_2" style="max-width: 100%;" alt="car image"/>
+                        </a>
+                        {{car.image_2ContentType}}, {{byteSize(car.image_2)}}
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

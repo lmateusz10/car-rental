@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
@@ -77,6 +78,16 @@ public class CarResourceIntTest {
     private static final Integer DEFAULT_SORT_ORDER = 1;
     private static final Integer UPDATED_SORT_ORDER = 2;
 
+    private static final byte[] DEFAULT_IMAGE_1 = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_IMAGE_1 = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_IMAGE_1_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_IMAGE_1_CONTENT_TYPE = "image/png";
+
+    private static final byte[] DEFAULT_IMAGE_2 = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_IMAGE_2 = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_IMAGE_2_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_IMAGE_2_CONTENT_TYPE = "image/png";
+
     @Autowired
     private CarRepository carRepository;
 
@@ -132,7 +143,11 @@ public class CarResourceIntTest {
             .rating(DEFAULT_RATING)
             .dateAdded(DEFAULT_DATE_ADDED)
             .dateModified(DEFAULT_DATE_MODIFIED)
-            .sortOrder(DEFAULT_SORT_ORDER);
+            .sortOrder(DEFAULT_SORT_ORDER)
+            .image_1(DEFAULT_IMAGE_1)
+            .image_1ContentType(DEFAULT_IMAGE_1_CONTENT_TYPE)
+            .image_2(DEFAULT_IMAGE_2)
+            .image_2ContentType(DEFAULT_IMAGE_2_CONTENT_TYPE);
         return car;
     }
 
@@ -167,6 +182,10 @@ public class CarResourceIntTest {
         assertThat(testCar.getDateAdded()).isEqualTo(DEFAULT_DATE_ADDED);
         assertThat(testCar.getDateModified()).isEqualTo(DEFAULT_DATE_MODIFIED);
         assertThat(testCar.getSortOrder()).isEqualTo(DEFAULT_SORT_ORDER);
+        assertThat(testCar.getImage_1()).isEqualTo(DEFAULT_IMAGE_1);
+        assertThat(testCar.getImage_1ContentType()).isEqualTo(DEFAULT_IMAGE_1_CONTENT_TYPE);
+        assertThat(testCar.getImage_2()).isEqualTo(DEFAULT_IMAGE_2);
+        assertThat(testCar.getImage_2ContentType()).isEqualTo(DEFAULT_IMAGE_2_CONTENT_TYPE);
     }
 
     @Test
@@ -299,7 +318,11 @@ public class CarResourceIntTest {
             .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING)))
             .andExpect(jsonPath("$.[*].dateAdded").value(hasItem(DEFAULT_DATE_ADDED.toString())))
             .andExpect(jsonPath("$.[*].dateModified").value(hasItem(DEFAULT_DATE_MODIFIED.toString())))
-            .andExpect(jsonPath("$.[*].sortOrder").value(hasItem(DEFAULT_SORT_ORDER)));
+            .andExpect(jsonPath("$.[*].sortOrder").value(hasItem(DEFAULT_SORT_ORDER)))
+            .andExpect(jsonPath("$.[*].image_1ContentType").value(hasItem(DEFAULT_IMAGE_1_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].image_1").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE_1))))
+            .andExpect(jsonPath("$.[*].image_2ContentType").value(hasItem(DEFAULT_IMAGE_2_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].image_2").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE_2))));
     }
     
     @Test
@@ -323,7 +346,11 @@ public class CarResourceIntTest {
             .andExpect(jsonPath("$.rating").value(DEFAULT_RATING))
             .andExpect(jsonPath("$.dateAdded").value(DEFAULT_DATE_ADDED.toString()))
             .andExpect(jsonPath("$.dateModified").value(DEFAULT_DATE_MODIFIED.toString()))
-            .andExpect(jsonPath("$.sortOrder").value(DEFAULT_SORT_ORDER));
+            .andExpect(jsonPath("$.sortOrder").value(DEFAULT_SORT_ORDER))
+            .andExpect(jsonPath("$.image_1ContentType").value(DEFAULT_IMAGE_1_CONTENT_TYPE))
+            .andExpect(jsonPath("$.image_1").value(Base64Utils.encodeToString(DEFAULT_IMAGE_1)))
+            .andExpect(jsonPath("$.image_2ContentType").value(DEFAULT_IMAGE_2_CONTENT_TYPE))
+            .andExpect(jsonPath("$.image_2").value(Base64Utils.encodeToString(DEFAULT_IMAGE_2)));
     }
 
     @Test
@@ -357,7 +384,11 @@ public class CarResourceIntTest {
             .rating(UPDATED_RATING)
             .dateAdded(UPDATED_DATE_ADDED)
             .dateModified(UPDATED_DATE_MODIFIED)
-            .sortOrder(UPDATED_SORT_ORDER);
+            .sortOrder(UPDATED_SORT_ORDER)
+            .image_1(UPDATED_IMAGE_1)
+            .image_1ContentType(UPDATED_IMAGE_1_CONTENT_TYPE)
+            .image_2(UPDATED_IMAGE_2)
+            .image_2ContentType(UPDATED_IMAGE_2_CONTENT_TYPE);
 
         restCarMockMvc.perform(put("/api/cars")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -379,6 +410,10 @@ public class CarResourceIntTest {
         assertThat(testCar.getDateAdded()).isEqualTo(UPDATED_DATE_ADDED);
         assertThat(testCar.getDateModified()).isEqualTo(UPDATED_DATE_MODIFIED);
         assertThat(testCar.getSortOrder()).isEqualTo(UPDATED_SORT_ORDER);
+        assertThat(testCar.getImage_1()).isEqualTo(UPDATED_IMAGE_1);
+        assertThat(testCar.getImage_1ContentType()).isEqualTo(UPDATED_IMAGE_1_CONTENT_TYPE);
+        assertThat(testCar.getImage_2()).isEqualTo(UPDATED_IMAGE_2);
+        assertThat(testCar.getImage_2ContentType()).isEqualTo(UPDATED_IMAGE_2_CONTENT_TYPE);
     }
 
     @Test

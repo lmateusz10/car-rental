@@ -110,6 +110,40 @@
                     <input type="number" class="form-control" name="sortOrder" id="field_sortOrder"
                         [(ngModel)]="car.sortOrder" />
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.image_1" for="field_image_1">Image 1</label>
+                    <div>
+                        <img [src]="'data:' + car.image_1ContentType + ';base64,' + car.image_1" style="max-height: 100px;" *ngIf="car.image_1" alt="car image"/>
+                        <div *ngIf="car.image_1" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{car.image_1ContentType}}, {{byteSize(car.image_1)}}</span>
+                            <button type="button" (click)="clearInputImage('image_1', 'image_1ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_image_1" (change)="setFileData($event, car, 'image_1', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="image_1" id="field_image_1"
+                        [(ngModel)]="car.image_1" />
+                    <input type="hidden" class="form-control" name="image_1ContentType" id="field_image_1ContentType"
+                        [(ngModel)]="car.image_1ContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="carRentalSystemApp.car.image_2" for="field_image_2">Image 2</label>
+                    <div>
+                        <img [src]="'data:' + car.image_2ContentType + ';base64,' + car.image_2" style="max-height: 100px;" *ngIf="car.image_2" alt="car image"/>
+                        <div *ngIf="car.image_2" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{car.image_2ContentType}}, {{byteSize(car.image_2)}}</span>
+                            <button type="button" (click)="clearInputImage('image_2', 'image_2ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_image_2" (change)="setFileData($event, car, 'image_2', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="image_2" id="field_image_2"
+                        [(ngModel)]="car.image_2" />
+                    <input type="hidden" class="form-control" name="image_2ContentType" id="field_image_2ContentType"
+                        [(ngModel)]="car.image_2ContentType" />
+                </div>
 
             </div>
             <div>

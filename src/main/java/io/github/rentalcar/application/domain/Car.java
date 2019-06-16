@@ -68,6 +68,20 @@ public class Car implements Serializable {
     @Column(name = "sort_order")
     private Integer sortOrder;
 
+    @Lob
+    @Column(name = "image_1")
+    private byte[] image_1;
+
+    @Column(name = "image_1_content_type")
+    private String image_1ContentType;
+
+    @Lob
+    @Column(name = "image_2")
+    private byte[] image_2;
+
+    @Column(name = "image_2_content_type")
+    private String image_2ContentType;
+
     @OneToMany(mappedBy = "car")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reservation> cars = new HashSet<>();
@@ -228,6 +242,58 @@ public class Car implements Serializable {
         this.sortOrder = sortOrder;
     }
 
+    public byte[] getImage_1() {
+        return image_1;
+    }
+
+    public Car image_1(byte[] image_1) {
+        this.image_1 = image_1;
+        return this;
+    }
+
+    public void setImage_1(byte[] image_1) {
+        this.image_1 = image_1;
+    }
+
+    public String getImage_1ContentType() {
+        return image_1ContentType;
+    }
+
+    public Car image_1ContentType(String image_1ContentType) {
+        this.image_1ContentType = image_1ContentType;
+        return this;
+    }
+
+    public void setImage_1ContentType(String image_1ContentType) {
+        this.image_1ContentType = image_1ContentType;
+    }
+
+    public byte[] getImage_2() {
+        return image_2;
+    }
+
+    public Car image_2(byte[] image_2) {
+        this.image_2 = image_2;
+        return this;
+    }
+
+    public void setImage_2(byte[] image_2) {
+        this.image_2 = image_2;
+    }
+
+    public String getImage_2ContentType() {
+        return image_2ContentType;
+    }
+
+    public Car image_2ContentType(String image_2ContentType) {
+        this.image_2ContentType = image_2ContentType;
+        return this;
+    }
+
+    public void setImage_2ContentType(String image_2ContentType) {
+        this.image_2ContentType = image_2ContentType;
+    }
+
     public Set<Reservation> getCars() {
         return cars;
     }
@@ -314,6 +380,10 @@ public class Car implements Serializable {
             ", dateAdded='" + getDateAdded() + "'" +
             ", dateModified='" + getDateModified() + "'" +
             ", sortOrder=" + getSortOrder() +
+            ", image_1='" + getImage_1() + "'" +
+            ", image_1ContentType='" + getImage_1ContentType() + "'" +
+            ", image_2='" + getImage_2() + "'" +
+            ", image_2ContentType='" + getImage_2ContentType() + "'" +
             "}";
     }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { ICar } from 'app/shared/model/car.model';
 import { AccountService } from 'app/core';
@@ -12,8 +12,7 @@ import { CarService } from './car.service';
 
 @Component({
     selector: 'jhi-car',
-    templateUrl: './car.component.html',
-    styleUrls: ['./car.component.css']
+    templateUrl: './car.component.html'
 })
 export class CarComponent implements OnInit, OnDestroy {
     currentAccount: any;
@@ -31,16 +30,13 @@ export class CarComponent implements OnInit, OnDestroy {
     previousPage: any;
     reverse: any;
 
-    newTask: string;
-    taskList: Array<string> = [];
-    tasksDone: Array<string> = [];
-
     constructor(
         protected carService: CarService,
         protected parseLinks: JhiParseLinks,
         protected jhiAlertService: JhiAlertService,
         protected accountService: AccountService,
         protected activatedRoute: ActivatedRoute,
+        protected dataUtils: JhiDataUtils,
         protected router: Router,
         protected eventManager: JhiEventManager
     ) {
@@ -51,22 +47,6 @@ export class CarComponent implements OnInit, OnDestroy {
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
-    }
-
-    add() {
-        this.taskList.push(this.newTask);
-        this.newTask = '';
-        console.log(this.taskList);
-    }
-
-    remove(task) {
-        this.taskList = this.taskList.filter(e => e !== task);
-    }
-
-    done(task: string) {
-        this.tasksDone.push(task);
-        this.remove(task);
-        console.log(this.tasksDone);
     }
 
     loadAll() {
@@ -128,6 +108,14 @@ export class CarComponent implements OnInit, OnDestroy {
         return item.id;
     }
 
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
     registerChangeInCars() {
         this.eventSubscriber = this.eventManager.subscribe('carListModification', response => this.loadAll());
     }
@@ -149,9 +137,5 @@ export class CarComponent implements OnInit, OnDestroy {
 
     protected onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
-    }
-
-    rentCarButtonClick() {
-        this.router.navigate(['/reservation/new']);
     }
 }
