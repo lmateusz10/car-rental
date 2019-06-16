@@ -35,6 +35,10 @@
                         </span>
                     </div>
                 </div>
+
+                <div *ngIf=(reservation?.endDate)>
+                    {{(((reservation.endDate - reservation.startDate)/(24*60*1000*60))*1000)}} zł
+                </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="carRentalSystemApp.reservation.paymentStatus" for="field_paymentStatus">Payment Status</label>
                     <select class="form-control" name="paymentStatus" [(ngModel)]="reservation.paymentStatus" id="field_paymentStatus" >
