@@ -2,24 +2,24 @@
     "carRentalSystemApp": {
         "reservation": {
             "home": {
-                "title": "Reservation",
-                "createLabel": "Dodaj Reservation",
-                "createOrEditLabel": "Dodaj lub edytuj: Reservation"
+                "title": "Rezerwacja",
+                "createLabel": "Utwórz nową rezerwację",
+                "createOrEditLabel": "Dodaj lub edytuj rezerwację"
             },
-            "created": "Utworzono nowy obiekt typu Reservation z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono obiekt typu Reservation z identyfikatorem {{ param }}",
-            "deleted": "Usunięto obiekt typu Reservation z identyfikatorem {{ param }}",
+            "created": "Utworzono nową rezerwację z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono rezerwację z identyfikatorem {{ param }}",
+            "deleted": "Usunięto rezerwację z identyfikatorem {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Reservation {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć rezerwację {{ id }}?"
             },
             "detail": {
-                "title": "Reservation"
+                "title": "Rezerwacja"
             },
-            "startDate": "Start Date",
-            "endDate": "End Date",
-            "paymentStatus": "Payment Status",
-            "car": "Car",
-            "user": "User"
+            "startDate": "Data rozpoczęcia rezerwacji",
+            "endDate": "Data zakończenia rezerwacji",
+            "paymentStatus": "Status płatności",
+            "car": "Samochód",
+            "user": "Użytkownik"
         }
     }
 }

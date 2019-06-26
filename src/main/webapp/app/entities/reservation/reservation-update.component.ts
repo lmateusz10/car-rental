@@ -11,7 +11,7 @@ import { Car, ICar } from 'app/shared/model/car.model';
 import { CarService } from 'app/entities/car';
 import { AccountService, IUser, User, UserService } from 'app/core';
 import { filter, map } from 'rxjs/operators';
-
+import { NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'jhi-reservation-update',
     templateUrl: './reservation-update.component.html'

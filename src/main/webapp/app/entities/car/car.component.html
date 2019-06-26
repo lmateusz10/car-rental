@@ -34,6 +34,110 @@
                     jhiTranslate="carRentalSystemApp.car.aircondition">Aircondition</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
+
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let car of cars ;trackBy: trackId">
+                <td><a [routerLink]="['/car', car.id, 'view' ]">{{car.id}}</a></td>
+                <td>
+                    <a *ngIf="car.image_1" (click)="openFile(car.image_1ContentType, car.image_1)">
+                        <img [src]="'data:' + car.image_1ContentType + ';base64,' + car.image_1" style="max-height: 30px;" alt="car image"/>
+                    </a>
+                </td>
+                <td>{{car.licensePlate}}</td>
+
+                <td>{{car.name}}</td>
+                <td jhiTranslate="{{'carRentalSystemApp.TransmissionType.' + car.transmission}}">{{car.transmission}}</td>
+                <td>{{car.aircondition}}</td>
+
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/car', car.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/car', car.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+
+                        <button type="submit"
+                                [routerLink]="['/reservation/newWithCar/' + car.id]"
+                                class="btn btn-info btn-sm">
+                            <span class="d-none d-md-inline">Rezerwacja</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="cars && cars.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5"
+                            [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+
+    <a *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">Test</a>
+
+</div>
+
+<div *jhiHasAnyAuthority="['ROLE_USER']">
+
+
+    <h2 id="page-heading">
+        <span jhiTranslate="carRentalSystemApp.car.home.title">Cars</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-car"
+                [routerLink]="['/car/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span jhiTranslate="carRentalSystemApp.car.home.createLabel">
+            Create new Car
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="cars">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="image_1"><span jhiTranslate="carRentalSystemApp.car.image_1">Image 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="licensePlate"><span
+                    jhiTranslate="carRentalSystemApp.car.licensePlate">License Plate</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="name"><span jhiTranslate="carRentalSystemApp.car.name">Name</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="transmission"><span
+                    jhiTranslate="carRentalSystemApp.car.transmission">Transmission</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="aircondition"><span
+                    jhiTranslate="carRentalSystemApp.car.aircondition">Aircondition</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
                 <th jhiSortBy="doors"><span jhiTranslate="carRentalSystemApp.car.doors">Doors</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
@@ -98,7 +202,7 @@
                                 [routerLink]="['/reservation/newWithCar/' + car.id]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline">Rezeerwacja</span>
+                            <span class="d-none d-md-inline">Rezerwacja</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/delete'} }]"
@@ -123,269 +227,4 @@
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
                             [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
-    </div>
-
-    <a *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">Test</a>
-
-</div>
-
-<div *jhiHasAnyAuthority="['ROLE_USER']">
-
-
-    <div class="row">
-        {{cars[1].name}}
-        <!--Heading container-->
-        <div class="heading__container container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h1 class="">Cars catalog</h1>
-                    <p class="">Choose Your car for rent</p>
-                </div>
-            </div>
-        </div>
-        <!--Filters container-->
-        <div class="filters container">
-            <div class="row">
-                <div class="filters__heading col-lg-2">
-                    <h2>Filters</h2>
-                </div>
-                <div class="filters__container col-lg-10">
-                    <!--Category filter-->
-                    <div ngbDropdown class="filters__button d-inline-block">
-                        <button class="btn btn-outline-primary" ngbDropdownToggle>Category</button>
-                        <div ngbDropdownMenu>
-                            <button class="dropdown-item">Sport</button>
-                            <button class="dropdown-item">Family</button>
-                            <button class="dropdown-item">Limousine</button>
-                        </div>
-                    </div>
-                    <!--Location filter-->
-                    <div ngbDropdown class="filters__button d-inline-block">
-                        <button class="btn btn-outline-primary" ngbDropdownToggle>Location</button>
-                        <div ngbDropdownMenu>
-                            <button class="dropdown-item">Tarnów</button>
-                            <button class="dropdown-item">Kraków</button>
-                            <button class="dropdown-item">Dębica</button>
-                            <button class="dropdown-item">Nowy Sącz</button>
-                            <button class="dropdown-item">Zakopane</button>
-                        </div>
-                    </div>
-                    <!--Engine filter-->
-                    <div ngbDropdown class="filters__button d-inline-block">
-                        <button class="btn btn-outline-primary" ngbDropdownToggle>Engine</button>
-                        <div ngbDropdownMenu>
-                            <button class="dropdown-item">Diesel</button>
-                            <button class="dropdown-item">Petrol</button>
-                            <button class="dropdown-item">Hybrid</button>
-                        </div>
-                    </div>
-                    <!--Gearbox filter-->
-                    <div ngbDropdown class="filters__button d-inline-block">
-                        <button class="btn btn-outline-primary" ngbDropdownToggle>Gearbox</button>
-                        <div ngbDropdownMenu>
-                            <button class="dropdown-item">Manual</button>
-                            <button class="dropdown-item">Automatic</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Grid container-->
-        <div class="container">
-            <div class="row">
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project One</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary" >Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Two</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Three</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Four</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Five</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Six</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Two</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Two</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Two</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Two</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Two</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog__item col-md-12 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt="Car image"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Project Two</a>
-                            </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                euismod odio, gravida pellentesque urna varius vitae.</p>
-                            <div class="card__buttons">
-                                <button class="btn btn-primary">Rent this car</button>
-                                <button class="btn btn-secondary">Read more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </div></div>

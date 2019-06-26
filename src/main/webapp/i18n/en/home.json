@@ -1,19 +1,34 @@
 {
-  "home": {
-    "title": "Welcome, Java Hipster!",
-    "subtitle": "This is your homepage",
-    "logged": {
-      "message": "You are logged in as user \"{{username}}\"."
-    },
-    "question": "If you have any question on JHipster:",
-    "link": {
-      "homepage": "JHipster homepage",
-      "stackoverflow": "JHipster on Stack Overflow",
-      "bugtracker": "JHipster bug tracker",
-      "chat": "JHipster public chat room",
-      "follow": "follow @java_hipster on Twitter"
-    },
-    "like": "If you like JHipster, don't forget to give us a star on",
-    "github": "GitHub"
-  }
+    "home": {
+        "carousel": {
+            "title": {
+                "first": "Sports cars",
+                "second": "Family cars",
+                "third": "Limousines"
+            },
+            "desc": {
+                "first": "Fast, loud and sharp looking",
+                "second": "Comfy, capacious and economical",
+                "third": "Luxurious, comfortable and outstanding."
+            }
+        },
+        "about": {
+            "title": "Best car rental company in Poland",
+            "desc": "Our rental service enables efficient car rental in as many as 12 cities in Poland. Cars from our offer are fully functional, washed and filled up to allow you to enjoy your ride without any worries. Rent today and see for yourself!"
+        },
+        "grid": {
+            "first-heading": "Catalog",
+            "second-heading": "Locations",
+            "third-heading": "Contact"
+        },
+        "cta": {
+            "heading": "Have questions? Contact with us",
+            "button": "Contact"
+        },
+        "title": "Car rental",
+        "who": {
+            "heading": "Who we are",
+            "desc": "Car rental company with 20 years tradidtion. We are doing our best to keep number one position in Poland"
+        }
+    }
 }

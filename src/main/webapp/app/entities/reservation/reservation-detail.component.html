@@ -1,3 +1,4 @@
+
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="reservation">
@@ -12,6 +13,12 @@
                 <dt><span jhiTranslate="carRentalSystemApp.reservation.endDate">End Date</span></dt>
                 <dd>
                     <span>{{reservation.endDate}}</span>
+                </dd>
+                <dd>
+                    <span>{{reservation.endDate}}</span>
+                </dd>
+                <dd>
+                    <span>Ala</span>
                 </dd>
                 <dt><span jhiTranslate="carRentalSystemApp.reservation.paymentStatus">Payment Status</span></dt>
                 <dd>
@@ -31,17 +38,21 @@
                 </dd>
             </dl>
 
+
             <button type="submit"
                     (click)="previousState()"
                     class="btn btn-info">
                 <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
             </button>
 
-            <button type="button"
-                    [routerLink]="['/reservation', reservation.id, 'edit']"
-                    class="btn btn-primary">
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-            </button>
+<!--            <button type="button"-->
+<!--                    [routerLink]="['/reservation', reservation.id, 'edit']"-->
+<!--                    class="btn btn-primary">-->
+<!--                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>-->
+<!--            </button>-->
         </div>
     </div>
 </div>
+
+<h2> test </h2>
+<p>test2</p>

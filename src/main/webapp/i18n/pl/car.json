@@ -2,34 +2,34 @@
     "carRentalSystemApp": {
         "car": {
             "home": {
-                "title": "Car",
-                "createLabel": "Dodaj Car",
-                "createOrEditLabel": "Dodaj lub edytuj: Car"
+                "title": "Samochód",
+                "createLabel": "Dodaj samochód",
+                "createOrEditLabel": "Dodaj lub edytuj samochód"
             },
-            "created": "Utworzono nowy obiekt typu Car z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono obiekt typu Car z identyfikatorem {{ param }}",
-            "deleted": "Usunięto obiekt typu Car z identyfikatorem {{ param }}",
+            "created": "Utworzono nowy samochód {{ param }}",
+            "updated": "Uaktualniono samochód z identyfikatorem {{ param }}",
+            "deleted": "Usunięto samochód z identyfikatorem {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Car {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć samochód {{ id }}?"
             },
             "detail": {
-                "title": "Car"
+                "title": "Samochód"
             },
-            "licensePlate": "License Plate",
-            "name": "Name",
-            "transmission": "Transmission",
-            "aircondition": "Aircondition",
-            "doors": "Doors",
-            "keywords": "Keywords",
-            "description": "Description",
-            "rating": "Rating",
-            "dateAdded": "Date Added",
-            "dateModified": "Date Modified",
-            "sortOrder": "Sort Order",
-            "image_1": "Image 1",
-            "image_2": "Image 2",
-            "car": "Car",
-            "category": "Category"
+            "licensePlate": "Numer rejestracyjny",
+            "name": "Marka i model",
+            "transmission": "Typ skrzyni biegów",
+            "aircondition": "Klimatyzacja",
+            "doors": "Ilość drzwi",
+            "keywords": "Słowa kluczowe",
+            "description": "Opis",
+            "rating": "Cena",
+            "dateAdded": "Data dodania",
+            "dateModified": "Date modyfikacji",
+            "sortOrder": "Dostępność",
+            "image_1": "Zdjecie główne",
+            "image_2": "Zdjęcie dodatkowe",
+            "car": "Samochód",
+            "category": "Kategoria"
         }
     }
 }

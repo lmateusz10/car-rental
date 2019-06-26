@@ -1,45 +1,51 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="category">
-            <h2><span jhiTranslate="carRentalSystemApp.category.detail.title">Category</span> {{category.id}}</h2>
+<!--            <h2><span jhiTranslate="carRentalSystemApp.category.detail.title">Category</span> {{category.id}}</h2>-->
+            <h2>Samochody sportowe</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="carRentalSystemApp.category.description">Description</span></dt>
+<!--                <th jhiSortBy="image_1"><span jhiTranslate="carRentalSystemApp.car.image_1">Image 1</span>-->
+<!--                    <fa-icon [icon]="'sort'"></fa-icon>-->
+<!--                </th>-->
+
+<!--                <dt><span jhiTranslate="carRentalSystemApp.category.description">Description</span></dt>-->
                 <dd>
-                    <span>{{category.description}}</span>
+<!--                    <span>{{category.description}}</span>-->
+                    <span>Najszybsze samochody dostępne na rynku. Idealne na tor.</span>
                 </dd>
-                <dt><span jhiTranslate="carRentalSystemApp.category.sortOrder">Sort Order</span></dt>
-                <dd>
-                    <span>{{category.sortOrder}}</span>
-                </dd>
-                <dt><span jhiTranslate="carRentalSystemApp.category.dateAdded">Date Added</span></dt>
-                <dd>
-                    <span>{{category.dateAdded}}</span>
-                </dd>
-                <dt><span jhiTranslate="carRentalSystemApp.category.dateModified">Date Modified</span></dt>
-                <dd>
-                    <span>{{category.dateModified}}</span>
-                </dd>
-                <dt><span jhiTranslate="carRentalSystemApp.category.status">Status</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'carRentalSystemApp.CategoryStatus.' + category.status}}">{{category.status}}</span>
-                </dd>
-                <dt><span jhiTranslate="carRentalSystemApp.category.parent">Parent</span></dt>
-                <dd>
-                    <div *ngIf="category.parent">
-                        <a [routerLink]="['/category', category.parent?.id, 'view']">{{category.parent?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="carRentalSystemApp.category.car">Car</span></dt>
+<!--                <dt><span jhiTranslate="carRentalSystemApp.category.sortOrder">Sort Order</span></dt>-->
 <!--                <dd>-->
-<!--                    <span *ngFor="let car of category.cars; let last = last">-->
-<!--                        <a [routerLink]="['/car', car?.id, 'view' ]">{{car.id}}</a>{{last ? '' : ', '}}-->
-<!--                    </span>-->
+<!--                    <span>{{category.sortOrder}}</span>-->
 <!--                </dd>-->
+<!--                <dt><span jhiTranslate="carRentalSystemApp.category.dateAdded">Date Added</span></dt>-->
+<!--                <dd>-->
+<!--                    <span>{{category.dateAdded}}</span>-->
+<!--                </dd>-->
+<!--                <dt><span jhiTranslate="carRentalSystemApp.category.dateModified">Date Modified</span></dt>-->
+<!--                <dd>-->
+<!--                    <span>{{category.dateModified}}</span>-->
+<!--                </dd>-->
+<!--                <dt><span jhiTranslate="carRentalSystemApp.category.status">Status</span></dt>-->
+<!--                <dd>-->
+<!--                    <span-->
+<!--                        jhiTranslate="{{'carRentalSystemApp.CategoryStatus.' + category.status}}">{{category.status}}</span>-->
+<!--                </dd>-->
+<!--                <dt><span jhiTranslate="carRentalSystemApp.category.parent">Parent</span></dt>-->
+<!--                <dd>-->
+<!--                    <div *ngIf="category.parent">-->
+<!--                        <a [routerLink]="['/category', category.parent?.id, 'view']">{{category.parent?.id}}</a>-->
+<!--                    </div>-->
+<!--                </dd>-->
+<!--                <dt><span jhiTranslate="carRentalSystemApp.category.car">Car</span></dt>-->
+<!--                <dt><span jhiTranslate="carRentalSystemApp.category.car">Car</span></dt>-->
+                <!--                <dd>-->
+                <!--                    <span *ngFor="let car of category.cars; let last = last">-->
+                <!--                        <a [routerLink]="['/car', car?.id, 'view' ]">{{car.id}}</a>{{last ? '' : ', '}}-->
+                <!--                    </span>-->
+                <!--                </dd>-->
             </dl>
-
-
 
 
             <div class="table-responsive" *ngIf="cars">
@@ -48,46 +54,55 @@
                     <tbody>
                     <tr *ngFor="let car of cars ">
                         <td><a [routerLink]="['/car', car.id, 'view' ]">{{car.id}}</a></td>
-                        <td>{{car.licensePlate}}</td>
+
+
+                        <td>
+                            <a *ngIf="car.image_1" (click)="openFile(car.image_1ContentType, car.image_1)">
+                                <img [src]="'data:' + car.image_1ContentType + ';base64,' + car.image_1" style="max-height: 30px;" alt="car image"/>
+                            </a>
+                        </td>
+<!--                        <td>{{car.licensePlate}}</td>-->
                         <td>{{car.name}}</td>
                         <td jhiTranslate="{{'carRentalSystemApp.TransmissionType.' + car.transmission}}">{{car.transmission}}</td>
-                        <td>{{car.aircondition}}</td>
-                        <td>{{car.doors}}</td>
-                        <td>{{car.keywords}}</td>
-                        <td>{{car.description}}</td>
-                        <td>{{car.rating}}</td>
-                        <td>{{car.dateAdded | date:'mediumDate'}}</td>
-                        <td>{{car.dateModified | date:'mediumDate'}}</td>
-                        <td>{{car.sortOrder}}</td>
+<!--                        <td>{{car.aircondition}}</td>-->
+<!--                        <td>{{car.doors}}</td>-->
+<!--                        <td>{{car.keywords}}</td>-->
+<!--                        <td>{{car.description}}</td>-->
+<!--                        <td>{{car.rating}}</td>-->
+                        <td>1000 zł/dzień</td>
+<!--                        <td>{{car.dateAdded | date:'mediumDate'}}</td>-->
+<!--                        <td>{{car.dateModified | date:'mediumDate'}}</td>-->
+<!--                        <td>{{car.sortOrder}}</td>-->
                         <td class="text-right">
                             <div class="btn-group flex-btn-group-container">
                                 <button type="submit"
                                         [routerLink]="['/car', car.id, 'view' ]"
                                         class="btn btn-info btn-sm">
                                     <fa-icon [icon]="'eye'"></fa-icon>
-                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+<!--                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
+                                    <span class="d-none d-md-inline">Szczegóły</span>
                                 </button>
-                                <button type="submit"
-                                        [routerLink]="['/car', car.id, 'edit']"
-                                        class="btn btn-primary btn-sm">
-                                    <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                </button>
+<!--                                <button type="submit"-->
+<!--                                        [routerLink]="['/car', car.id, 'edit']"-->
+<!--                                        class="btn btn-primary btn-sm">-->
+<!--                                    <fa-icon [icon]="'pencil-alt'"></fa-icon>-->
+<!--                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>-->
+<!--                                </button>-->
 
                                 <button type="submit"
                                         [routerLink]="['/reservation/newWithCar/' + car.id]"
                                         class="btn btn-info btn-sm">
-                                    <fa-icon [icon]="'eye'"></fa-icon>
-                                    <span class="d-none d-md-inline">Rezeerwacja</span>
+<!--                                    <fa-icon [icon]="'eye'"></fa-icon>-->
+                                    <span class="d-none d-md-inline">Rezerwacja</span>
                                 </button>
-                                <button type="submit"
-                                        [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/delete'} }]"
-                                        replaceUrl="true"
-                                        queryParamsHandling="merge"
-                                        class="btn btn-danger btn-sm">
-                                    <fa-icon [icon]="'times'"></fa-icon>
-                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                                </button>
+<!--                                <button type="submit"-->
+<!--                                        [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/delete'} }]"-->
+<!--                                        replaceUrl="true"-->
+<!--                                        queryParamsHandling="merge"-->
+<!--                                        class="btn btn-danger btn-sm">-->
+<!--                                    <fa-icon [icon]="'times'"></fa-icon>-->
+<!--                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+<!--                                </button>-->
                             </div>
                         </td>
                     </tr>

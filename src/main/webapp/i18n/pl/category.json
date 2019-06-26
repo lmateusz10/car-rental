@@ -2,26 +2,26 @@
     "carRentalSystemApp": {
         "category": {
             "home": {
-                "title": "Category",
-                "createLabel": "Dodaj Category",
-                "createOrEditLabel": "Dodaj lub edytuj: Category"
+                "title": "Kategoria",
+                "createLabel": "Dodaj kategorię",
+                "createOrEditLabel": "Dodaj lub edytuj kategorię"
             },
-            "created": "Utworzono nowy obiekt typu Category z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono obiekt typu Category z identyfikatorem {{ param }}",
-            "deleted": "Usunięto obiekt typu Category z identyfikatorem {{ param }}",
+            "created": "Utworzono nową kategorię{ param }}",
+            "updated": "Uaktualniono katogorię z identyfikatorem {{ param }}",
+            "deleted": "Usunięto kategorię z identyfikatorem {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Category {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć kategorię {{ id }}?"
             },
             "detail": {
-                "title": "Category"
+                "title": "Kategoria"
             },
-            "description": "Description",
+            "description": "Opis",
             "sortOrder": "Sort Order",
-            "dateAdded": "Date Added",
-            "dateModified": "Date Modified",
+            "dateAdded": "Data dodania",
+            "dateModified": "Data modyfikacji",
             "status": "Status",
-            "parent": "Parent",
-            "car": "Car"
+            "parent": "Rodzic kategorii",
+            "car": "Samochód"
         }
     }
 }

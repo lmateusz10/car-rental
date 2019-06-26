@@ -2,25 +2,25 @@
     "carRentalSystemApp": {
         "address": {
             "home": {
-                "title": "Address",
-                "createLabel": "Dodaj Address",
-                "createOrEditLabel": "Dodaj lub edytuj: Address"
+                "title": "Adres",
+                "createLabel": "Dodaj adres",
+                "createOrEditLabel": "Dodaj lub edytuj adres"
             },
-            "created": "Utworzono nowy obiekt typu Address z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono obiekt typu Address z identyfikatorem {{ param }}",
-            "deleted": "Usunięto obiekt typu Address z identyfikatorem {{ param }}",
+            "created": "Dodano adres do klienta",
+            "updated": "Uaktualniono adres klienta",
+            "deleted": "Usunięto adres",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Address {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć adres {{ id }}?"
             },
             "detail": {
-                "title": "Address"
+                "title": "Adres"
             },
-            "address1": "Address 1",
-            "address2": "Address 2",
-            "city": "City",
-            "postcode": "Postcode",
-            "country": "Country",
-            "user": "User"
+            "address1": "Adres",
+            "address2": "Adres cd.",
+            "city": "Miasto",
+            "postcode": "Kod pocztowy",
+            "country": "Kraj",
+            "user": "Użytkownik"
         }
     }
 }
